@@ -1333,4 +1333,448 @@
       EL_STOCK_ACCOUNT = #{elStockAccount,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+  <resultMap id="BaseResultMap" type="com.zlzf.stock.model.entity.Product">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+    <result column="PRODUCT_ACCOUNT" jdbcType="VARCHAR" property="productAccount" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="BEGIN_DATE" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="END_DATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="BUSINESS_MODEL" jdbcType="VARCHAR" property="businessModel" />
+    <result column="SPE_ACC_NAME" jdbcType="VARCHAR" property="speAccName" />
+    <result column="OPEN_ACC_BANK" jdbcType="VARCHAR" property="openAccBank" />
+    <result column="SPE_ACCOUNT" jdbcType="VARCHAR" property="speAccount" />
+    <result column="REPAID_AMT" jdbcType="DECIMAL" property="repaidAmt" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="STOCK_ACCOUNT" jdbcType="VARCHAR" property="stockAccount" />
+    <result column="ISSUER_ACOUNT" jdbcType="VARCHAR" property="issuerAcount" />
+    <result column="PRODUCT_CODES" jdbcType="VARCHAR" property="productCodes" />
+    <result column="SUPERVISE_AGENT" jdbcType="VARCHAR" property="superviseAgent" />
+    <result column="SUPERVISE_AUDIT" jdbcType="VARCHAR" property="superviseAudit" />
+    <result column="SUPERVISE_REVIEW" jdbcType="VARCHAR" property="superviseReview" />
+    <result column="AUDITOR" jdbcType="VARCHAR" property="auditor" />
+    <result column="AUDIT_STATUS" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="AUDIT_TIME" jdbcType="TIMESTAMP" property="auditTime" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="ISSUER_ACOUNT_ID" jdbcType="VARCHAR" property="issuerAcountId" />
+    <result column="SETTLE_AMT" jdbcType="DECIMAL" property="settleAmt" />
+    <result column="CASH_AMT" jdbcType="DECIMAL" property="cashAmt" />
+    <result column="TODAY_REPAID" jdbcType="DECIMAL" property="todayRepaid" />
+    <result column="TODAY_CASH" jdbcType="DECIMAL" property="todayCash" />
+    <result column="BANK_ACCOUNT_NAME" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="ISSUER_ENTPID" jdbcType="VARCHAR" property="issuerEntpid" />
+    <result column="STOCK_ENTPID" jdbcType="VARCHAR" property="stockEntpid" />
+    <result column="EL_ISSUER_ACOUNT" jdbcType="VARCHAR" property="elIssuerAcount" />
+    <result column="EL_STOCK_ACCOUNT" jdbcType="VARCHAR" property="elStockAccount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PRODUCT_NAME, PRODUCT_ACCOUNT, AMOUNT, STATUS, BEGIN_DATE, END_DATE, CREATE_TIME, 
+    UPDATE_TIME, BUSINESS_MODEL, SPE_ACC_NAME, OPEN_ACC_BANK, SPE_ACCOUNT, REPAID_AMT, 
+    ORGANIZATION_ID, STOCK_ACCOUNT, ISSUER_ACOUNT, PRODUCT_CODES, SUPERVISE_AGENT, SUPERVISE_AUDIT, 
+    SUPERVISE_REVIEW, AUDITOR, AUDIT_STATUS, AUDIT_TIME, REMARKS, ISSUER_ACOUNT_ID, SETTLE_AMT, 
+    CASH_AMT, TODAY_REPAID, TODAY_CASH, BANK_ACCOUNT_NAME, ISSUER_ENTPID, STOCK_ENTPID, 
+    EL_ISSUER_ACOUNT, EL_STOCK_ACCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_PRODUCT
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_PRODUCT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlzf.stock.model.entity.Product">
+    insert into T_PRODUCT (ID, PRODUCT_NAME, PRODUCT_ACCOUNT, 
+      AMOUNT, STATUS, BEGIN_DATE, 
+      END_DATE, CREATE_TIME, UPDATE_TIME, 
+      BUSINESS_MODEL, SPE_ACC_NAME, OPEN_ACC_BANK, 
+      SPE_ACCOUNT, REPAID_AMT, ORGANIZATION_ID, 
+      STOCK_ACCOUNT, ISSUER_ACOUNT, PRODUCT_CODES, 
+      SUPERVISE_AGENT, SUPERVISE_AUDIT, SUPERVISE_REVIEW, 
+      AUDITOR, AUDIT_STATUS, AUDIT_TIME, 
+      REMARKS, ISSUER_ACOUNT_ID, SETTLE_AMT, 
+      CASH_AMT, TODAY_REPAID, TODAY_CASH, 
+      BANK_ACCOUNT_NAME, ISSUER_ENTPID, STOCK_ENTPID, 
+      EL_ISSUER_ACOUNT, EL_STOCK_ACCOUNT)
+    values (#{id,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productAccount,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{beginDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{businessModel,jdbcType=VARCHAR}, #{speAccName,jdbcType=VARCHAR}, #{openAccBank,jdbcType=VARCHAR}, 
+      #{speAccount,jdbcType=VARCHAR}, #{repaidAmt,jdbcType=DECIMAL}, #{organizationId,jdbcType=VARCHAR}, 
+      #{stockAccount,jdbcType=VARCHAR}, #{issuerAcount,jdbcType=VARCHAR}, #{productCodes,jdbcType=VARCHAR}, 
+      #{superviseAgent,jdbcType=VARCHAR}, #{superviseAudit,jdbcType=VARCHAR}, #{superviseReview,jdbcType=VARCHAR}, 
+      #{auditor,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{issuerAcountId,jdbcType=VARCHAR}, #{settleAmt,jdbcType=DECIMAL}, 
+      #{cashAmt,jdbcType=DECIMAL}, #{todayRepaid,jdbcType=DECIMAL}, #{todayCash,jdbcType=DECIMAL}, 
+      #{bankAccountName,jdbcType=VARCHAR}, #{issuerEntpid,jdbcType=VARCHAR}, #{stockEntpid,jdbcType=VARCHAR}, 
+      #{elIssuerAcount,jdbcType=VARCHAR}, #{elStockAccount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlzf.stock.model.entity.Product">
+    insert into T_PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME,
+      </if>
+      <if test="productAccount != null">
+        PRODUCT_ACCOUNT,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="businessModel != null">
+        BUSINESS_MODEL,
+      </if>
+      <if test="speAccName != null">
+        SPE_ACC_NAME,
+      </if>
+      <if test="openAccBank != null">
+        OPEN_ACC_BANK,
+      </if>
+      <if test="speAccount != null">
+        SPE_ACCOUNT,
+      </if>
+      <if test="repaidAmt != null">
+        REPAID_AMT,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="stockAccount != null">
+        STOCK_ACCOUNT,
+      </if>
+      <if test="issuerAcount != null">
+        ISSUER_ACOUNT,
+      </if>
+      <if test="productCodes != null">
+        PRODUCT_CODES,
+      </if>
+      <if test="superviseAgent != null">
+        SUPERVISE_AGENT,
+      </if>
+      <if test="superviseAudit != null">
+        SUPERVISE_AUDIT,
+      </if>
+      <if test="superviseReview != null">
+        SUPERVISE_REVIEW,
+      </if>
+      <if test="auditor != null">
+        AUDITOR,
+      </if>
+      <if test="auditStatus != null">
+        AUDIT_STATUS,
+      </if>
+      <if test="auditTime != null">
+        AUDIT_TIME,
+      </if>
+      <if test="remarks != null">
+        REMARKS,
+      </if>
+      <if test="issuerAcountId != null">
+        ISSUER_ACOUNT_ID,
+      </if>
+      <if test="settleAmt != null">
+        SETTLE_AMT,
+      </if>
+      <if test="cashAmt != null">
+        CASH_AMT,
+      </if>
+      <if test="todayRepaid != null">
+        TODAY_REPAID,
+      </if>
+      <if test="todayCash != null">
+        TODAY_CASH,
+      </if>
+      <if test="bankAccountName != null">
+        BANK_ACCOUNT_NAME,
+      </if>
+      <if test="issuerEntpid != null">
+        ISSUER_ENTPID,
+      </if>
+      <if test="stockEntpid != null">
+        STOCK_ENTPID,
+      </if>
+      <if test="elIssuerAcount != null">
+        EL_ISSUER_ACOUNT,
+      </if>
+      <if test="elStockAccount != null">
+        EL_STOCK_ACCOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productAccount != null">
+        #{productAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessModel != null">
+        #{businessModel,jdbcType=VARCHAR},
+      </if>
+      <if test="speAccName != null">
+        #{speAccName,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccBank != null">
+        #{openAccBank,jdbcType=VARCHAR},
+      </if>
+      <if test="speAccount != null">
+        #{speAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaidAmt != null">
+        #{repaidAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockAccount != null">
+        #{stockAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerAcount != null">
+        #{issuerAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="productCodes != null">
+        #{productCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseAgent != null">
+        #{superviseAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseAudit != null">
+        #{superviseAudit,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseReview != null">
+        #{superviseReview,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerAcountId != null">
+        #{issuerAcountId,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAmt != null">
+        #{settleAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="cashAmt != null">
+        #{cashAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="todayRepaid != null">
+        #{todayRepaid,jdbcType=DECIMAL},
+      </if>
+      <if test="todayCash != null">
+        #{todayCash,jdbcType=DECIMAL},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerEntpid != null">
+        #{issuerEntpid,jdbcType=VARCHAR},
+      </if>
+      <if test="stockEntpid != null">
+        #{stockEntpid,jdbcType=VARCHAR},
+      </if>
+      <if test="elIssuerAcount != null">
+        #{elIssuerAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="elStockAccount != null">
+        #{elStockAccount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlzf.stock.model.entity.Product">
+    update T_PRODUCT
+    <set>
+      <if test="productName != null">
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productAccount != null">
+        PRODUCT_ACCOUNT = #{productAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessModel != null">
+        BUSINESS_MODEL = #{businessModel,jdbcType=VARCHAR},
+      </if>
+      <if test="speAccName != null">
+        SPE_ACC_NAME = #{speAccName,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccBank != null">
+        OPEN_ACC_BANK = #{openAccBank,jdbcType=VARCHAR},
+      </if>
+      <if test="speAccount != null">
+        SPE_ACCOUNT = #{speAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="repaidAmt != null">
+        REPAID_AMT = #{repaidAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockAccount != null">
+        STOCK_ACCOUNT = #{stockAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerAcount != null">
+        ISSUER_ACOUNT = #{issuerAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="productCodes != null">
+        PRODUCT_CODES = #{productCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseAgent != null">
+        SUPERVISE_AGENT = #{superviseAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseAudit != null">
+        SUPERVISE_AUDIT = #{superviseAudit,jdbcType=VARCHAR},
+      </if>
+      <if test="superviseReview != null">
+        SUPERVISE_REVIEW = #{superviseReview,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        AUDITOR = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerAcountId != null">
+        ISSUER_ACOUNT_ID = #{issuerAcountId,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAmt != null">
+        SETTLE_AMT = #{settleAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="cashAmt != null">
+        CASH_AMT = #{cashAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="todayRepaid != null">
+        TODAY_REPAID = #{todayRepaid,jdbcType=DECIMAL},
+      </if>
+      <if test="todayCash != null">
+        TODAY_CASH = #{todayCash,jdbcType=DECIMAL},
+      </if>
+      <if test="bankAccountName != null">
+        BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerEntpid != null">
+        ISSUER_ENTPID = #{issuerEntpid,jdbcType=VARCHAR},
+      </if>
+      <if test="stockEntpid != null">
+        STOCK_ENTPID = #{stockEntpid,jdbcType=VARCHAR},
+      </if>
+      <if test="elIssuerAcount != null">
+        EL_ISSUER_ACOUNT = #{elIssuerAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="elStockAccount != null">
+        EL_STOCK_ACCOUNT = #{elStockAccount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlzf.stock.model.entity.Product">
+    update T_PRODUCT
+    set PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_ACCOUNT = #{productAccount,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      BUSINESS_MODEL = #{businessModel,jdbcType=VARCHAR},
+      SPE_ACC_NAME = #{speAccName,jdbcType=VARCHAR},
+      OPEN_ACC_BANK = #{openAccBank,jdbcType=VARCHAR},
+      SPE_ACCOUNT = #{speAccount,jdbcType=VARCHAR},
+      REPAID_AMT = #{repaidAmt,jdbcType=DECIMAL},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      STOCK_ACCOUNT = #{stockAccount,jdbcType=VARCHAR},
+      ISSUER_ACOUNT = #{issuerAcount,jdbcType=VARCHAR},
+      PRODUCT_CODES = #{productCodes,jdbcType=VARCHAR},
+      SUPERVISE_AGENT = #{superviseAgent,jdbcType=VARCHAR},
+      SUPERVISE_AUDIT = #{superviseAudit,jdbcType=VARCHAR},
+      SUPERVISE_REVIEW = #{superviseReview,jdbcType=VARCHAR},
+      AUDITOR = #{auditor,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      REMARKS = #{remarks,jdbcType=VARCHAR},
+      ISSUER_ACOUNT_ID = #{issuerAcountId,jdbcType=VARCHAR},
+      SETTLE_AMT = #{settleAmt,jdbcType=DECIMAL},
+      CASH_AMT = #{cashAmt,jdbcType=DECIMAL},
+      TODAY_REPAID = #{todayRepaid,jdbcType=DECIMAL},
+      TODAY_CASH = #{todayCash,jdbcType=DECIMAL},
+      BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+      ISSUER_ENTPID = #{issuerEntpid,jdbcType=VARCHAR},
+      STOCK_ENTPID = #{stockEntpid,jdbcType=VARCHAR},
+      EL_ISSUER_ACOUNT = #{elIssuerAcount,jdbcType=VARCHAR},
+      EL_STOCK_ACCOUNT = #{elStockAccount,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>
