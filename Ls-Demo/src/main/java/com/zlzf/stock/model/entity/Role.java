@@ -1,13 +1,8 @@
 package com.zlzf.stock.model.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
-/** ok
- * @Description: 角色信息实体
- * @author: libingtan
- * @date: 2018年8月24日 下午2:10:26  
- */
-public class Role {
+public class Role implements Serializable {
     private String id;
 
     private String rolename;
@@ -15,67 +10,24 @@ public class Role {
     private String roledesc;
 
     private String parentId;
-    
+
     private String parentName;
-    
-    private List<Permission> permissions;
-    
-    private String token;
-    
+
     private String roleType;
-    
+
+    private String token;
+
     private String organizationId;
-    
-    private String organizationName;    
-    
-    private String enterpriseId;
-    
-    /**
-     * 创建时间
-     */
+
+    private String organizationName;
+
+    private String entpId;
+
     private String createTime;
 
-    public String getEnterpriseId() {
-		return enterpriseId;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setEnterpriseId(String enterpriseId) {
-		this.enterpriseId = enterpriseId;
-	}
-
-	public String getOrganizationName() {
-		return organizationName;
-	}
-
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
-	}
-
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getRoleType() {
-		return roleType;
-	}
-
-	public void setRoleType(String roleType) {
-		this.roleType = roleType;
-	}
-
-	public String getId() {
+    public String getId() {
         return id;
     }
 
@@ -107,35 +59,59 @@ public class Role {
         this.parentId = parentId == null ? null : parentId.trim();
     }
 
-	public List<Permission> getPermissions() {
-		return permissions;
-	}
+    public String getParentName() {
+        return parentName;
+    }
 
-	public void setPermissions(List<Permission> permissions) {
-		this.permissions = permissions;
-	}
+    public void setParentName(String parentName) {
+        this.parentName = parentName == null ? null : parentName.trim();
+    }
 
-	public String getParentName() {
-		return parentName;
-	}
+    public String getRoleType() {
+        return roleType;
+    }
 
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
-	}
-	
-	
-	public String getCreateTime() {
-		return createTime;
-	}
+    public void setRoleType(String roleType) {
+        this.roleType = roleType == null ? null : roleType.trim();
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", rolename=" + rolename + ", roledesc=" + roledesc + ", parentId=" + parentId
-				+ ", parentName=" + parentName + ", permissions=" + permissions + "]";
-	}
+    public void setToken(String token) {
+        this.token = token == null ? null : token.trim();
+    }
 
+    public String getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId == null ? null : organizationId.trim();
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName == null ? null : organizationName.trim();
+    }
+
+    public String getEntpId() {
+        return entpId;
+    }
+
+    public void setEntpId(String entpId) {
+        this.entpId = entpId == null ? null : entpId.trim();
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime == null ? null : createTime.trim();
+    }
 }

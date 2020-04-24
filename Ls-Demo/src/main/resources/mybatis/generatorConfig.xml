@@ -49,7 +49,7 @@
 			enableCountByExample="true" enableUpdateByExample="true"
 			enableDeleteByExample="true" enableSelectByExample="true"
 			selectByExampleQueryId="true" />-->
-		<table tableName="T_PRODUCT" domainObjectName="Product"
+		<table tableName="T_ORDER" domainObjectName="Order"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"/> 

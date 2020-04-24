@@ -5,7 +5,7 @@ import com.zlzf.stock.model.entity.OrganizationExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface OrganizationMapper {
+public interface OrganizationDao {
     long countByExample(OrganizationExample example);
 
     int deleteByExample(OrganizationExample example);

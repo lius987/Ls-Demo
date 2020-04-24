@@ -2,7 +2,7 @@ package com.zlzf.stock.dao;
 
 import com.zlzf.stock.model.entity.Product;
 
-public interface ProductMapper {
+public interface ProductDao {
     int deleteByPrimaryKey(String id);
 
     int insert(Product record);

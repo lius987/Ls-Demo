@@ -43,6 +43,509 @@
     <result column="CREATE_CUST_ID" jdbcType="VARCHAR" property="createCustId" />
     <result column="FUNDCERTFICATE" jdbcType="VARCHAR" property="fundcertficate" />
   </resultMap>
+  <sql id="Base_Column_List">
+    ID, MERCHANT_ID, MERCHANT_SEQ_ID, CUST_ID, USER_NAME_TEXT, CERT_TYPE, CERT_ID, RECHARGE_CODE, 
+    RECEI_BANK_CODE, PAYMENT_BANK_CODE, CARD_NAME, CARD_NO, ORDER_AMT, STATUS, AUDIT_STATUS, 
+    AUDIT_MSG, ORDER_DATE, RECHARGE_NO, CREATE_TIME, UPDATE_TIME, DESCRIPTION, FIRST_CHECKER, 
+    FINAL_CHECKER, CHECK_STATUS, IS_CALLBACK, CALLBACK_DATE, RESV, BUSINESS_TYPE, PAYMENT_ID, 
+    PAYEE_CUST_ID, PAYEE_CUST_NAME, TRADE_TYPE, WITHDRAW_TYPE, ORGANIZATION_ID, NOTICE_TARGET, 
+    USER_ID, VALID_STATUS, PROTOCOL_ID, CREATE_CUST_ID, FUNDCERTFICATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_ORDER
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_ORDER
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlzf.stock.model.entity.Order">
+    insert into T_ORDER (ID, MERCHANT_ID, MERCHANT_SEQ_ID, 
+      CUST_ID, USER_NAME_TEXT, CERT_TYPE, 
+      CERT_ID, RECHARGE_CODE, RECEI_BANK_CODE, 
+      PAYMENT_BANK_CODE, CARD_NAME, CARD_NO, 
+      ORDER_AMT, STATUS, AUDIT_STATUS, 
+      AUDIT_MSG, ORDER_DATE, RECHARGE_NO, 
+      CREATE_TIME, UPDATE_TIME, DESCRIPTION, 
+      FIRST_CHECKER, FINAL_CHECKER, CHECK_STATUS, 
+      IS_CALLBACK, CALLBACK_DATE, RESV, 
+      BUSINESS_TYPE, PAYMENT_ID, PAYEE_CUST_ID, 
+      PAYEE_CUST_NAME, TRADE_TYPE, WITHDRAW_TYPE, 
+      ORGANIZATION_ID, NOTICE_TARGET, USER_ID, 
+      VALID_STATUS, PROTOCOL_ID, CREATE_CUST_ID, 
+      FUNDCERTFICATE)
+    values (#{id,jdbcType=VARCHAR}, #{merchantId,jdbcType=VARCHAR}, #{merchantSeqId,jdbcType=VARCHAR}, 
+      #{custId,jdbcType=VARCHAR}, #{userNameText,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, 
+      #{certId,jdbcType=VARCHAR}, #{rechargeCode,jdbcType=VARCHAR}, #{receiBankCode,jdbcType=VARCHAR}, 
+      #{paymentBankCode,jdbcType=VARCHAR}, #{cardName,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, 
+      #{orderAmt,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR}, 
+      #{auditMsg,jdbcType=VARCHAR}, #{orderDate,jdbcType=VARCHAR}, #{rechargeNo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, 
+      #{firstChecker,jdbcType=VARCHAR}, #{finalChecker,jdbcType=VARCHAR}, #{checkStatus,jdbcType=VARCHAR}, 
+      #{isCallback,jdbcType=VARCHAR}, #{callbackDate,jdbcType=VARCHAR}, #{resv,jdbcType=VARCHAR}, 
+      #{businessType,jdbcType=VARCHAR}, #{paymentId,jdbcType=VARCHAR}, #{payeeCustId,jdbcType=VARCHAR}, 
+      #{payeeCustName,jdbcType=VARCHAR}, #{tradeType,jdbcType=VARCHAR}, #{withdrawType,jdbcType=VARCHAR}, 
+      #{organizationId,jdbcType=VARCHAR}, #{noticeTarget,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{validStatus,jdbcType=CHAR}, #{protocolId,jdbcType=VARCHAR}, #{createCustId,jdbcType=VARCHAR}, 
+      #{fundcertficate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlzf.stock.model.entity.Order">
+    insert into T_ORDER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="merchantId != null">
+        MERCHANT_ID,
+      </if>
+      <if test="merchantSeqId != null">
+        MERCHANT_SEQ_ID,
+      </if>
+      <if test="custId != null">
+        CUST_ID,
+      </if>
+      <if test="userNameText != null">
+        USER_NAME_TEXT,
+      </if>
+      <if test="certType != null">
+        CERT_TYPE,
+      </if>
+      <if test="certId != null">
+        CERT_ID,
+      </if>
+      <if test="rechargeCode != null">
+        RECHARGE_CODE,
+      </if>
+      <if test="receiBankCode != null">
+        RECEI_BANK_CODE,
+      </if>
+      <if test="paymentBankCode != null">
+        PAYMENT_BANK_CODE,
+      </if>
+      <if test="cardName != null">
+        CARD_NAME,
+      </if>
+      <if test="cardNo != null">
+        CARD_NO,
+      </if>
+      <if test="orderAmt != null">
+        ORDER_AMT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="auditStatus != null">
+        AUDIT_STATUS,
+      </if>
+      <if test="auditMsg != null">
+        AUDIT_MSG,
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE,
+      </if>
+      <if test="rechargeNo != null">
+        RECHARGE_NO,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="firstChecker != null">
+        FIRST_CHECKER,
+      </if>
+      <if test="finalChecker != null">
+        FINAL_CHECKER,
+      </if>
+      <if test="checkStatus != null">
+        CHECK_STATUS,
+      </if>
+      <if test="isCallback != null">
+        IS_CALLBACK,
+      </if>
+      <if test="callbackDate != null">
+        CALLBACK_DATE,
+      </if>
+      <if test="resv != null">
+        RESV,
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE,
+      </if>
+      <if test="paymentId != null">
+        PAYMENT_ID,
+      </if>
+      <if test="payeeCustId != null">
+        PAYEE_CUST_ID,
+      </if>
+      <if test="payeeCustName != null">
+        PAYEE_CUST_NAME,
+      </if>
+      <if test="tradeType != null">
+        TRADE_TYPE,
+      </if>
+      <if test="withdrawType != null">
+        WITHDRAW_TYPE,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="noticeTarget != null">
+        NOTICE_TARGET,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="validStatus != null">
+        VALID_STATUS,
+      </if>
+      <if test="protocolId != null">
+        PROTOCOL_ID,
+      </if>
+      <if test="createCustId != null">
+        CREATE_CUST_ID,
+      </if>
+      <if test="fundcertficate != null">
+        FUNDCERTFICATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null">
+        #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantSeqId != null">
+        #{merchantSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null">
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNameText != null">
+        #{userNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certId != null">
+        #{certId,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeCode != null">
+        #{rechargeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiBankCode != null">
+        #{receiBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentBankCode != null">
+        #{paymentBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null">
+        #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null">
+        #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditMsg != null">
+        #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeNo != null">
+        #{rechargeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="firstChecker != null">
+        #{firstChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="finalChecker != null">
+        #{finalChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null">
+        #{checkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallback != null">
+        #{isCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackDate != null">
+        #{callbackDate,jdbcType=VARCHAR},
+      </if>
+      <if test="resv != null">
+        #{resv,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentId != null">
+        #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCustId != null">
+        #{payeeCustId,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCustName != null">
+        #{payeeCustName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null">
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawType != null">
+        #{withdrawType,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTarget != null">
+        #{noticeTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null">
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="protocolId != null">
+        #{protocolId,jdbcType=VARCHAR},
+      </if>
+      <if test="createCustId != null">
+        #{createCustId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundcertficate != null">
+        #{fundcertficate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlzf.stock.model.entity.Order">
+    update T_ORDER
+    <set>
+      <if test="merchantId != null">
+        MERCHANT_ID = #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantSeqId != null">
+        MERCHANT_SEQ_ID = #{merchantSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null">
+        CUST_ID = #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNameText != null">
+        USER_NAME_TEXT = #{userNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        CERT_TYPE = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certId != null">
+        CERT_ID = #{certId,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeCode != null">
+        RECHARGE_CODE = #{rechargeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiBankCode != null">
+        RECEI_BANK_CODE = #{receiBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentBankCode != null">
+        PAYMENT_BANK_CODE = #{paymentBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null">
+        CARD_NAME = #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        CARD_NO = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmt != null">
+        ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="auditMsg != null">
+        AUDIT_MSG = #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE = #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeNo != null">
+        RECHARGE_NO = #{rechargeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="firstChecker != null">
+        FIRST_CHECKER = #{firstChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="finalChecker != null">
+        FINAL_CHECKER = #{finalChecker,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null">
+        CHECK_STATUS = #{checkStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallback != null">
+        IS_CALLBACK = #{isCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackDate != null">
+        CALLBACK_DATE = #{callbackDate,jdbcType=VARCHAR},
+      </if>
+      <if test="resv != null">
+        RESV = #{resv,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentId != null">
+        PAYMENT_ID = #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCustId != null">
+        PAYEE_CUST_ID = #{payeeCustId,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeCustName != null">
+        PAYEE_CUST_NAME = #{payeeCustName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null">
+        TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawType != null">
+        WITHDRAW_TYPE = #{withdrawType,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTarget != null">
+        NOTICE_TARGET = #{noticeTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null">
+        VALID_STATUS = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="protocolId != null">
+        PROTOCOL_ID = #{protocolId,jdbcType=VARCHAR},
+      </if>
+      <if test="createCustId != null">
+        CREATE_CUST_ID = #{createCustId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundcertficate != null">
+        FUNDCERTFICATE = #{fundcertficate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlzf.stock.model.entity.Order">
+    update T_ORDER
+    set MERCHANT_ID = #{merchantId,jdbcType=VARCHAR},
+      MERCHANT_SEQ_ID = #{merchantSeqId,jdbcType=VARCHAR},
+      CUST_ID = #{custId,jdbcType=VARCHAR},
+      USER_NAME_TEXT = #{userNameText,jdbcType=VARCHAR},
+      CERT_TYPE = #{certType,jdbcType=VARCHAR},
+      CERT_ID = #{certId,jdbcType=VARCHAR},
+      RECHARGE_CODE = #{rechargeCode,jdbcType=VARCHAR},
+      RECEI_BANK_CODE = #{receiBankCode,jdbcType=VARCHAR},
+      PAYMENT_BANK_CODE = #{paymentBankCode,jdbcType=VARCHAR},
+      CARD_NAME = #{cardName,jdbcType=VARCHAR},
+      CARD_NO = #{cardNo,jdbcType=VARCHAR},
+      ORDER_AMT = #{orderAmt,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      AUDIT_STATUS = #{auditStatus,jdbcType=VARCHAR},
+      AUDIT_MSG = #{auditMsg,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=VARCHAR},
+      RECHARGE_NO = #{rechargeNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      FIRST_CHECKER = #{firstChecker,jdbcType=VARCHAR},
+      FINAL_CHECKER = #{finalChecker,jdbcType=VARCHAR},
+      CHECK_STATUS = #{checkStatus,jdbcType=VARCHAR},
+      IS_CALLBACK = #{isCallback,jdbcType=VARCHAR},
+      CALLBACK_DATE = #{callbackDate,jdbcType=VARCHAR},
+      RESV = #{resv,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      PAYMENT_ID = #{paymentId,jdbcType=VARCHAR},
+      PAYEE_CUST_ID = #{payeeCustId,jdbcType=VARCHAR},
+      PAYEE_CUST_NAME = #{payeeCustName,jdbcType=VARCHAR},
+      TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+      WITHDRAW_TYPE = #{withdrawType,jdbcType=VARCHAR},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      NOTICE_TARGET = #{noticeTarget,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      VALID_STATUS = #{validStatus,jdbcType=CHAR},
+      PROTOCOL_ID = #{protocolId,jdbcType=VARCHAR},
+      CREATE_CUST_ID = #{createCustId,jdbcType=VARCHAR},
+      FUNDCERTFICATE = #{fundcertficate,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.zlzf.stock.model.entity.Order">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="MERCHANT_ID" jdbcType="VARCHAR" property="merchantId" />
+    <result column="MERCHANT_SEQ_ID" jdbcType="VARCHAR" property="merchantSeqId" />
+    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+    <result column="USER_NAME_TEXT" jdbcType="VARCHAR" property="userNameText" />
+    <result column="CERT_TYPE" jdbcType="VARCHAR" property="certType" />
+    <result column="CERT_ID" jdbcType="VARCHAR" property="certId" />
+    <result column="RECHARGE_CODE" jdbcType="VARCHAR" property="rechargeCode" />
+    <result column="RECEI_BANK_CODE" jdbcType="VARCHAR" property="receiBankCode" />
+    <result column="PAYMENT_BANK_CODE" jdbcType="VARCHAR" property="paymentBankCode" />
+    <result column="CARD_NAME" jdbcType="VARCHAR" property="cardName" />
+    <result column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+    <result column="ORDER_AMT" jdbcType="DECIMAL" property="orderAmt" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="AUDIT_STATUS" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="AUDIT_MSG" jdbcType="VARCHAR" property="auditMsg" />
+    <result column="ORDER_DATE" jdbcType="VARCHAR" property="orderDate" />
+    <result column="RECHARGE_NO" jdbcType="VARCHAR" property="rechargeNo" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="FIRST_CHECKER" jdbcType="VARCHAR" property="firstChecker" />
+    <result column="FINAL_CHECKER" jdbcType="VARCHAR" property="finalChecker" />
+    <result column="CHECK_STATUS" jdbcType="VARCHAR" property="checkStatus" />
+    <result column="IS_CALLBACK" jdbcType="VARCHAR" property="isCallback" />
+    <result column="CALLBACK_DATE" jdbcType="VARCHAR" property="callbackDate" />
+    <result column="RESV" jdbcType="VARCHAR" property="resv" />
+    <result column="BUSINESS_TYPE" jdbcType="VARCHAR" property="businessType" />
+    <result column="PAYMENT_ID" jdbcType="VARCHAR" property="paymentId" />
+    <result column="PAYEE_CUST_ID" jdbcType="VARCHAR" property="payeeCustId" />
+    <result column="PAYEE_CUST_NAME" jdbcType="VARCHAR" property="payeeCustName" />
+    <result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+    <result column="WITHDRAW_TYPE" jdbcType="VARCHAR" property="withdrawType" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="NOTICE_TARGET" jdbcType="VARCHAR" property="noticeTarget" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="VALID_STATUS" jdbcType="CHAR" property="validStatus" />
+    <result column="PROTOCOL_ID" jdbcType="VARCHAR" property="protocolId" />
+    <result column="CREATE_CUST_ID" jdbcType="VARCHAR" property="createCustId" />
+    <result column="FUNDCERTFICATE" jdbcType="VARCHAR" property="fundcertficate" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -763,4 +1266,29 @@
       FUNDCERTFICATE = #{fundcertficate,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+  	<!-- 年收入统计 -->
+	<select id="findYearIncomeAmt" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT NOWYEAR RESV, AMT ORDER_AMT FROM (
+		SELECT TO_CHAR(T.CREATE_TIME,
+		'yyyy') NOWYEAR, COALESCE(SUM(T.ORDER_AMT),0) AMT FROM T_ORDER T
+		WHERE T.STATUS='02' AND((T.PAYEE_CUST_ID=#{custId, jdbcType=VARCHAR} AND
+		T.TRADE_TYPE='03' ) or
+		(T.CUST_ID=#{custId, jdbcType=VARCHAR} AND T.TRADE_TYPE='01' ))
+		AND T.ORGANIZATION_ID=#{organizationId, jdbcType=VARCHAR}
+		GROUP
+		BY TO_CHAR(T.CREATE_TIME, 'yyyy')
+		) WHERE NOWYEAR=#{year,jdbcType=VARCHAR}
+	</select>
+		<!-- 年支出统计 -->
+	<select id="findYearPayAmt" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT NOWYEAR RESV, AMT ORDER_AMT FROM (
+		SELECT TO_CHAR(T.CREATE_TIME,
+		'yyyy') NOWYEAR, COALESCE(SUM(T.ORDER_AMT),0) AMT FROM T_ORDER T
+		WHERE T.STATUS='02' AND T.CUST_ID=#{custId, jdbcType=VARCHAR} AND (T.TRADE_TYPE =
+		'03' or T.TRADE_TYPE = '02')
+		AND T.ORGANIZATION_ID=#{organizationId, jdbcType=VARCHAR}
+		GROUP BY TO_CHAR(T.CREATE_TIME, 'yyyy')
+		) WHERE
+		NOWYEAR=#{year,jdbcType=VARCHAR}
+	</select>
 </mapper>

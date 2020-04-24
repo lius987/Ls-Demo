@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlzf.stock.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.zlzf.stock.model.entity.Role">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
+    <result column="ROLEDESC" jdbcType="VARCHAR" property="roledesc" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="PARENT_NAME" jdbcType="VARCHAR" property="parentName" />
+    <result column="ROLE_TYPE" jdbcType="VARCHAR" property="roleType" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="ORGANIZATION_NAME" jdbcType="VARCHAR" property="organizationName" />
+    <result column="ENTP_ID" jdbcType="VARCHAR" property="entpId" />
+    <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ROLENAME, ROLEDESC, PARENT_ID, PARENT_NAME, ROLE_TYPE, TOKEN, ORGANIZATION_ID, 
+    ORGANIZATION_NAME, ENTP_ID, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_ROLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_ROLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlzf.stock.model.entity.Role">
+    insert into T_ROLE (ID, ROLENAME, ROLEDESC, 
+      PARENT_ID, PARENT_NAME, ROLE_TYPE, 
+      TOKEN, ORGANIZATION_ID, ORGANIZATION_NAME, 
+      ENTP_ID, CREATE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{roledesc,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{parentName,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{organizationId,jdbcType=VARCHAR}, #{organizationName,jdbcType=VARCHAR}, 
+      #{entpId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlzf.stock.model.entity.Role">
+    insert into T_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="rolename != null">
+        ROLENAME,
+      </if>
+      <if test="roledesc != null">
+        ROLEDESC,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="parentName != null">
+        PARENT_NAME,
+      </if>
+      <if test="roleType != null">
+        ROLE_TYPE,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="organizationName != null">
+        ORGANIZATION_NAME,
+      </if>
+      <if test="entpId != null">
+        ENTP_ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null">
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null">
+        #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentName != null">
+        #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationName != null">
+        #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="entpId != null">
+        #{entpId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlzf.stock.model.entity.Role">
+    update T_ROLE
+    <set>
+      <if test="rolename != null">
+        ROLENAME = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null">
+        ROLEDESC = #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentName != null">
+        PARENT_NAME = #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationName != null">
+        ORGANIZATION_NAME = #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="entpId != null">
+        ENTP_ID = #{entpId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlzf.stock.model.entity.Role">
+    update T_ROLE
+    set ROLENAME = #{rolename,jdbcType=VARCHAR},
+      ROLEDESC = #{roledesc,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      PARENT_NAME = #{parentName,jdbcType=VARCHAR},
+      ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      ORGANIZATION_NAME = #{organizationName,jdbcType=VARCHAR},
+      ENTP_ID = #{entpId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
