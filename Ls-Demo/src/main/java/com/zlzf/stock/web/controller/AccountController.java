@@ -1,6 +1,5 @@
 package com.zlzf.stock.web.controller;
 
-import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ylink.ylpay.common.project.account.exception.AccountCheckedException;
 import com.ylink.ylpay.common.project.mp.app.EnterpriseAppService;
 import com.ylink.ylpay.common.project.mp.dto.Enterprise;
-import com.ylink.ylpay.common.project.stock.app.RoleAppService;
 import com.zlzf.stock.common.exception.StockBusinessException;
 import com.zlzf.stock.common.utils.DateUtil;
 import com.zlzf.stock.common.utils.SessionManager;
@@ -55,8 +52,8 @@ public class AccountController  extends AbstractStockController{ //继承抽象�
 	@Qualifier("enterpriseAppService")
 	private EnterpriseAppService enterpriseAppService;
 
-	@RequestMapping(value = "/findcingAcInfo",method = RequestMethod.GET)
-	public ModelAndView findcingAcInfo(HttpServletRequest request,Model model,HttpServletResponse response) {
+	@RequestMapping(value = "/financingAcInfo",method = RequestMethod.GET)
+	public ModelAndView financingAcInfo(HttpServletRequest request,Model model,HttpServletResponse response) {
 		logger.info("跳转账户信息页");
 		logger.info("请求参数:无");
 		ModelAndView view = new ModelAndView("error");
@@ -93,7 +90,7 @@ public class AccountController  extends AbstractStockController{ //继承抽象�
 			view.addObject("custName", custName);
 			view.addObject("custId", custId);
 			view.addObject("accountAmt", accountAmt);
-			view.setViewName("account/findcingAcInfo");
+			view.setViewName("account/financingAcInfo");
 			logger.info("响应参数:custId--{},账户余额--{},企业角色名称--{}",new Object[] {custId,accountAmt,proleName});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -102,7 +99,32 @@ public class AccountController  extends AbstractStockController{ //继承抽象�
 		}
 		logger.info("跳转账户信息页结束");
 		return view;
-
 	}
+	
+	@RequestMapping(value = "/productAcInfo",method = {RequestMethod.GET})
+	public ModelAndView productAcInfo(HttpServletRequest request,HttpServletResponse response) {
+		logger.info("跳转产品户信息页开始!");
+		return null;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
