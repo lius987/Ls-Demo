@@ -11,7 +11,8 @@ import java.util.Map;
 public enum AlarmGrade {
 	NONEED("0","无需计费"),
 	BEFORE("1","事先计费"),
-	AFTER("2","事后计费");
+	AFTER("2","事后计费"),
+	AA("3","小刘的测试");
 	
 	private String value;
 	private final String displayName;
